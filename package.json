@@ -1,0 +1,45 @@
+{
+  "name": "cracion-an",
+  "version": "1.0.0",
+  "description": "Aplicacion nativa de escritorio en Windows y servidor MCP cracion AN para Blender 5.2.",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "cracion-an": "dist/index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "app": "powershell.exe -NoProfile -STA -WindowStyle Hidden -ExecutionPolicy Bypass -File app-windows\\CracionAN.ps1",
+    "inspect": "npm run build && npx @modelcontextprotocol/inspector node dist/index.js",
+    "crear-mcp": "node constructor/servidor.mjs",
+    "new-tool": "node scripts/new-tool.mjs",
+    "configurar": "node scripts/configurar-opencode.mjs",
+    "configurar:global": "node scripts/configurar-opencode.mjs --global",
+    "test": "npm run build && node scripts/smoke-test.mjs",
+    "demo": "npm run build && node scripts/demo-examen.mjs",
+    "setup": "node instalador/setup.mjs",
+    "construir-instaladores": "node instalador/construir.mjs",
+    "diagnostico": "node scripts/diagnostico.mjs"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "opencode",
+    "starter"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}
